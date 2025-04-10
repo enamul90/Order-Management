@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+del {
+    font-weight: normal !important;
+}
+
+.gallery-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Responsive image sizes */
+@media (max-width: 768px) {
+    .image-gallery .image-gallery-image img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .image-gallery .image-gallery-thumbnails-container {
+        display: flex;
+        flex-wrap: wrap ;
+    }
+
+    .image-gallery .image-gallery-thumbnail {
+        width: 100px;
+        height: auto;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-gallery .image-gallery-thumbnail {
+        width: 80px;
+        height: auto;
+        margin: 5px;
+    }
+
+    .image-gallery .image-gallery-image img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
