@@ -102,140 +102,144 @@ const Home = () => {
             </Box>
 
             {/* Main Content */}
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '3fr 1fr' }, gap: 3 }}>
+            <Box className={"block lg:flex space-y-5 lg:gap-x-5"}>
                 {/* Product Table */}
-                <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, flexWrap: 'wrap', gap: 2 }}>
-                        <TextField
-                            placeholder="Search products..."
-                            variant="outlined"
-                            size="small"
-                            sx={{ width: { xs: '100%', sm: '300px' } }}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <Search />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <Stack direction="row" spacing={2}>
-                            <Button
-                                variant="contained"
-                                color="error"
-                                disabled={selectedRows.length === 0}
-                                sx={{ textTransform: 'none' }}
-                            >
-                                Delete Selected
-                            </Button>
-                            <Button
-                                variant="contained"
-                                sx={{ bgcolor: 'purple.500', '&:hover': { bgcolor: 'purple.600' }, textTransform: 'none' }}
-                            >
-                                Add New Product
-                            </Button>
-                        </Stack>
-                    </Box>
+                <Box className={"w-full lg:w-[70%]"}>
+                    <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, flexWrap: 'wrap', gap: 2 }}>
+                            <TextField
+                                placeholder="Search products..."
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: { xs: '100%', sm: '300px' } }}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <Search />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                            <Stack direction="row" spacing={2}>
+                                <Button
+                                    variant="contained"
+                                    color="error"
+                                    disabled={selectedRows.length === 0}
+                                    sx={{ textTransform: 'none' }}
+                                >
+                                    Delete Selected
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    sx={{ bgcolor: 'purple.500', '&:hover': { bgcolor: 'purple.600' }, textTransform: 'none' }}
+                                >
+                                    Add New Product
+                                </Button>
+                            </Stack>
+                        </Box>
 
-                    {/* Responsive Table */}
-                    <TableContainer sx={{ whiteSpace: 'nowrap' }}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell padding="checkbox">
-                                        <Checkbox
-                                            checked={selectedRows.length === products.length}
-                                            onChange={handleSelectAllRows}
-                                        />
-                                    </TableCell>
-                                    <TableCell sx={{ fontWeight: 600 }}>PRODUCT TITLE</TableCell>
-                                    <TableCell sx={{ fontWeight: 600 }}>PRICE</TableCell>
-                                    <TableCell sx={{ fontWeight: 600 }}>SELL</TableCell>
-                                    <TableCell sx={{ fontWeight: 600 }}>IMAGE</TableCell>
-                                    <TableCell sx={{ fontWeight: 600 }}>ACTION</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {products.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((product) => (
-                                    <TableRow
-                                        key={product.id}
-                                        hover
-                                        sx={{ '&:hover': { bgcolor: 'grey.50' } }}
-                                    >
+                        {/* Responsive Table */}
+                        <TableContainer sx={{ whiteSpace: 'nowrap' }}>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
                                         <TableCell padding="checkbox">
                                             <Checkbox
-                                                checked={selectedRows.includes(product.id)}
-                                                onChange={() => handleSelectRow(product.id)}
+                                                checked={selectedRows.length === products.length}
+                                                onChange={handleSelectAllRows}
                                             />
                                         </TableCell>
-                                        <TableCell>{product.title}</TableCell>
-                                        <TableCell>{product.price}</TableCell>
-                                        <TableCell>{product.sell}</TableCell>
-                                        <TableCell>
-                                            {product.image ? (
-                                                <Avatar src={product.image} variant="square" sx={{ width: 40, height: 40 }} />
-                                            ) : (
-                                                <Typography variant="body2" color="text.secondary">-</Typography>
-                                            )}
-                                        </TableCell>
-                                        <TableCell>
-                                            <Link to={"/product-details"}>
-                                                <IconButton size="small"><Visibility sx={{ color: 'info.main' }} /></IconButton>
-                                            </Link>
-                                            <IconButton size="small"><Edit sx={{ color: 'warning.main' }} /></IconButton>
-                                            <IconButton size="small"><Delete sx={{ color: 'error.main' }} /></IconButton>
-                                            <IconButton size="small"><CopyAll sx={{ color: 'text.secondary' }} /></IconButton>
-                                        </TableCell>
+                                        <TableCell sx={{ fontWeight: 600 }}>PRODUCT TITLE</TableCell>
+                                        <TableCell sx={{ fontWeight: 600 }}>PRICE</TableCell>
+                                        <TableCell sx={{ fontWeight: 600 }}>SELL</TableCell>
+                                        <TableCell sx={{ fontWeight: 600 }}>IMAGE</TableCell>
+                                        <TableCell sx={{ fontWeight: 600 }}>ACTION</TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                </TableHead>
+                                <TableBody>
+                                    {products.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((product) => (
+                                        <TableRow
+                                            key={product.id}
+                                            hover
+                                            sx={{ '&:hover': { bgcolor: 'grey.50' } }}
+                                        >
+                                            <TableCell padding="checkbox">
+                                                <Checkbox
+                                                    checked={selectedRows.includes(product.id)}
+                                                    onChange={() => handleSelectRow(product.id)}
+                                                />
+                                            </TableCell>
+                                            <TableCell>{product.title}</TableCell>
+                                            <TableCell>{product.price}</TableCell>
+                                            <TableCell>{product.sell}</TableCell>
+                                            <TableCell>
+                                                {product.image ? (
+                                                    <Avatar src={product.image} variant="square" sx={{ width: 40, height: 40 }} />
+                                                ) : (
+                                                    <Typography variant="body2" color="text.secondary">-</Typography>
+                                                )}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Link to={"/product-details"}>
+                                                    <IconButton size="small"><Visibility sx={{ color: 'info.main' }} /></IconButton>
+                                                </Link>
+                                                <IconButton size="small"><Edit sx={{ color: 'warning.main' }} /></IconButton>
+                                                <IconButton size="small"><Delete sx={{ color: 'error.main' }} /></IconButton>
+                                                <IconButton size="small"><CopyAll sx={{ color: 'text.secondary' }} /></IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
 
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 3 }}>
-                        <Typography variant="body2" color="text.secondary">
-                            Showing {Math.min(rowsPerPage, products.length)} of {products.length}
-                        </Typography>
-                        <Pagination
-                            count={Math.ceil(products.length / rowsPerPage)}
-                            page={page}
-                            onChange={handlePageChange}
-                            color="primary"
-                            size="small"
-                        />
-                    </Box>
-                </Paper>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 3 }}>
+                            <Typography variant="body2" color="text.secondary">
+                                Showing {Math.min(rowsPerPage, products.length)} of {products.length}
+                            </Typography>
+                            <Pagination
+                                count={Math.ceil(products.length / rowsPerPage)}
+                                page={page}
+                                onChange={handlePageChange}
+                                color="primary"
+                                size="small"
+                            />
+                        </Box>
+                    </Paper>
+                </Box>
 
                 {/* Settings Section */}
-                <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
-                    <TabContext value={value}>
-                        <TabList
-                            onChange={handleChange}
-                            sx={{
-                                borderBottom: 1,
-                                borderColor: 'divider',
-                                '& .MuiTab-root': {
-                                    textTransform: 'none',
-                                    minWidth: 100,
-                                },
-                            }}
-                            TabIndicatorProps={{ sx: { bgcolor: '#f59e0b', height: 3 } }}
-                        >
-                            <Tab label="Company" value="1" sx={{ color: value === "1" ? '#f59e0b' : 'inherit' }} />
-                            <Tab label="Payment" value="2" sx={{ color: value === "2" ? '#f59e0b' : 'inherit' }} />
-                            <Tab label="Password" value="3" sx={{ color: value === "3" ? '#f59e0b' : 'inherit' }} />
-                        </TabList>
-                        <TabPanel value="1" sx={{ p: 0, pt: 2 }}>
-                            <ProductCompany />
-                        </TabPanel>
-                        <TabPanel value="2" sx={{ p: 0, pt: 2 }}>
-                            <AddPaymentMethod />
-                        </TabPanel>
-                        <TabPanel value="3" sx={{ p: 0, pt: 2 }}>
-                            <ResetPassword />
-                        </TabPanel>
-                    </TabContext>
-                </Paper>
+                <Box className={"w-full lg:w-[30%]"}>
+                    <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
+                        <TabContext value={value}>
+                            <TabList
+                                onChange={handleChange}
+                                sx={{
+                                    borderBottom: 1,
+                                    borderColor: 'divider',
+                                    '& .MuiTab-root': {
+                                        textTransform: 'none',
+                                        minWidth: 100,
+                                    },
+                                }}
+                                TabIndicatorProps={{ sx: { bgcolor: '#f59e0b', height: 3 } }}
+                            >
+                                <Tab label="Company" value="1" sx={{ color: value === "1" ? '#f59e0b' : 'inherit' }} />
+                                <Tab label="Payment" value="2" sx={{ color: value === "2" ? '#f59e0b' : 'inherit' }} />
+                                <Tab label="Password" value="3" sx={{ color: value === "3" ? '#f59e0b' : 'inherit' }} />
+                            </TabList>
+                            <TabPanel value="1" sx={{ p: 0, pt: 2 }}>
+                                <ProductCompany />
+                            </TabPanel>
+                            <TabPanel value="2" sx={{ p: 0, pt: 2 }}>
+                                <AddPaymentMethod />
+                            </TabPanel>
+                            <TabPanel value="3" sx={{ p: 0, pt: 2 }}>
+                                <ResetPassword />
+                            </TabPanel>
+                        </TabContext>
+                    </Paper>
+                </Box>
             </Box>
         </Box>
     );
