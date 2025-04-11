@@ -14,9 +14,9 @@ import {
     Tooltip,
     Stack,
     Skeleton,
-    Card,
+    Card, Button,
 } from '@mui/material';
-import { PreviewOutlined, Visibility } from '@mui/icons-material';
+import {ArrowForward, Person2, PreviewOutlined, Visibility} from '@mui/icons-material';
 import OrderHeader from "../order-header.jsx";
 
 const orders = [
@@ -81,8 +81,11 @@ const OrderRow = memo(({ order, onView }) => (
             )}
         </TableCell>
         <TableCell sx={{ py: 1.5 }}>
+            <IconButton sx={{color: 'primary.main'}}>
+                <Person2 />
+            </IconButton>
             <IconButton onClick={() => onView(order.id)} size="small" sx={{ color: 'primary.main' }}>
-                <Visibility />
+                <ArrowForward />
             </IconButton>
         </TableCell>
     </TableRow>
@@ -147,9 +150,21 @@ const NewOrder = () => {
                         </Card>
                     ) : selectedOrder ? (
                         <Card sx={{ p: 3, borderRadius: 2, boxShadow: 2, bgcolor: 'white' }}>
-                            <Typography variant="h5" fontWeight="bold" mb={3}>
-                                Order Preview
-                            </Typography>
+                            <Box className={"flex items-center justify-between mb-3"}>
+                                <Box>
+                                    <Typography variant="h6" fontWeight="bold">
+                                        Order Preview
+                                    </Typography>
+                                </Box>
+                                <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+                                    <Button sx={{paddingX:2, paddingY:1, backgroundColor: 'grey.100', color: 'grey.500', fontSize: '12px', fontWeight: 'bold'}} >
+                                        Delivery
+                                    </Button>
+                                    <Button sx={{paddingX:2, paddingY:1, backgroundColor: 'grey.100', color: 'red', fontSize: '12px', fontWeight: 'bold'}} >
+                                        Reject
+                                    </Button>
+                                </Box>
+                            </Box>
                             <Stack spacing={3}>
                                 {/* Product Details */}
                                 <Box>

@@ -16,7 +16,7 @@ import {
     Skeleton,
     Card,
 } from '@mui/material';
-import { PreviewOutlined, Visibility } from '@mui/icons-material';
+import {ArrowForward, PreviewOutlined, Visibility} from '@mui/icons-material';
 import OrderHeader from "../order-header.jsx";
 
 const orders = [
@@ -82,7 +82,7 @@ const OrderRow = memo(({ order, onView }) => (
         </TableCell>
         <TableCell sx={{ py: 1.5 }}>
             <IconButton onClick={() => onView(order.id)} size="small" sx={{ color: 'primary.main' }}>
-                <Visibility />
+                <ArrowForward />
             </IconButton>
         </TableCell>
     </TableRow>
