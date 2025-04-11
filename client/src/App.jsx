@@ -6,7 +6,8 @@ import ProductDetails from "./component/details/Product-Details.jsx";
 import RegisterPage from "./page/login-form/Register-page.jsx";
 import LoginPage from "./page/login-form/Login-Page.jsx";
 import HomePage from "./page/home/Home-Page.jsx";
-import OrderPage from "./page/order/Order-Page.jsx";
+import DeliveryOrderPage from "./page/order/DeliveryOrder-Page.jsx";
+import NewOrderPage from "./page/order/NewOrder-Page.jsx";
 
 const App = () => {
     return (
@@ -19,7 +20,9 @@ const App = () => {
 
                     <Route path={"/"} element={<HomePage />} />
                     <Route path={"/product-details"} element={<ProductDetailsPage />} />
-                    <Route path={"/order"} element={<OrderPage />} />
+
+                    <Route path={"/order/delivery-order"} element={<DeliveryOrderPage />} />
+                    <Route path={"/order/new-order"} element={<NewOrderPage />} />
                 </Routes>
             </BrowserRouter>
         </>

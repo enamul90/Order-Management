@@ -27,7 +27,7 @@ const AppNavbar = () => {
                     <IconButton>
                         <FavoriteBorderIcon sx={{ color: '#f87171' }} /> {/* red-400 */}
                     </IconButton>
-                    <Link to={"/order"}>
+                    <Link to={"/order/delivery-order"}>
                         <IconButton>
                             <ShoppingCartOutlinedIcon sx={{ color: '#a78bfa' }} /> {/* violet-400 */}
                         </IconButton>
