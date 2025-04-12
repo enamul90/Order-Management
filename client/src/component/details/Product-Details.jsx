@@ -62,8 +62,8 @@ const ProductDetails = () => {
                             <Typography variant="body2" color="text.secondary">
                                 Product ID: UID152368
                             </Typography>
-                            <Typography variant="h4" fontWeight="bold" mt={1} sx={{ color: 'text.primary' }}>
-                                Green Tiered Midi Dress
+                            <Typography variant="h5" fontWeight="bold" mt={1} sx={{ color: 'text.primary' }}>
+                                Readymade Linen Fabrics Glorious Designed Gown 1piece long kurti And koti, By Anisha Fashion Gallary Kamiz and koti For Stylish Women / Girls
                             </Typography>
                             <Stack direction="row" spacing={2} alignItems="center" mt={1}>
                                 <Typography variant="subtitle2">
@@ -80,7 +80,9 @@ const ProductDetails = () => {
                         </Box>
 
                         <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                            Floaty florals and a flattering fit-and-flare silhouette make this green tiered midi an elegant pick.
+                            Stylish Joggers & T-shirt combo for men's Stylish Joggers & T-shirt combo for men'sStylish Joggers & T-shirt combo for men's Stylish
+                            Joggers & T-shirt combo for men'sStylish Joggers & T-shirt combo for men's Stylish Joggers & T-shirt combo for men's Stylish Joggers &.
+                            T-shirt combo for men's Stylish Joggers & T-shirt combo for men's Stylish Joggers & T-shirt combo for men's Stylish Joggers & T-shirt combo for men's
                         </Typography>
 
                         {/* Size Selection */}
@@ -113,6 +115,38 @@ const ProductDetails = () => {
                                 ))}
                             </Stack>
                         </Box>
+
+                        {/* color Selection */}
+                        <Box>
+                            <Typography variant="h6" fontWeight="bold" mb={2} sx={{ color: 'text.primary' }}>
+                                Select Color
+                            </Typography>
+                            <Stack direction="row" spacing={1.5} flexWrap="wrap" sx={{ gap: 1 }}>
+                                {['Black', 'Green', 'White', 'Rad', 'Gray'].map((size) => (
+                                    <Button
+                                        key={size}
+                                        variant={selectedSize === size ? 'contained' : 'outlined'}
+                                        onClick={() => handleSizeSelect(size)}
+                                        sx={{
+                                            minWidth: 48,
+                                            height: 48,
+                                            borderRadius: 1,
+                                            bgcolor: selectedSize === size ? 'purple.500' : 'grey.100',
+                                            color: selectedSize === size ? 'white' : 'text.primary',
+                                            borderColor: selectedSize === size ? 'purple.500' : 'grey.300',
+                                            fontWeight: 500,
+                                            '&:hover': {
+                                                bgcolor: selectedSize === size ? 'purple.600' : 'grey.200',
+                                                borderColor: selectedSize === size ? 'purple.600' : 'grey.400',
+                                            },
+                                        }}
+                                    >
+                                        {size}
+                                    </Button>
+                                ))}
+                            </Stack>
+                        </Box>
+
 
                         {/* Price and Quantity */}
                         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} alignItems={{ xs: 'flex-start', sm: 'center' }} sx={{ my: 2 }}>

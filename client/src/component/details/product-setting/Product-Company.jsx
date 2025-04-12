@@ -78,7 +78,7 @@ const ProductCompany = () => {
                                     <img
                                         src={file}
                                         alt="Logo"
-                                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                        style={{ minWidth: '100%', minHeight: '100%', objectFit: 'contain' }}
                                     />
                                 </>
                             ) : (

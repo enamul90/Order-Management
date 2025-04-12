@@ -10,6 +10,7 @@ import {
     Tooltip,
 } from '@mui/material';
 import { AiOutlineUser, AiOutlineLogout, AiOutlineSetting } from 'react-icons/ai';
+import {FaFacebookF, FaYoutube} from "react-icons/fa";
 
 // Placeholder logo
 const Logo = () => (
@@ -18,39 +19,11 @@ const Logo = () => (
         fontWeight="bold"
         sx={{ color: 'purple.500', letterSpacing: 1 }}
     >
-        MyBrand
+       Logo
     </Typography>
 );
 
 const MenuBar = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-
-    const handleMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
-
-    const handleLogout = () => {
-        // Add logout logic here (e.g., clear auth token, redirect to login)
-        console.log('User logged out');
-        handleMenuClose();
-    };
-
-    const handleProfile = () => {
-        // Add profile navigation logic here
-        console.log('Navigating to profile');
-        handleMenuClose();
-    };
-
-    const handleSettings = () => {
-        // Add settings navigation logic here
-        console.log('Navigating to settings');
-        handleMenuClose();
-    };
 
     return (
         <Box
@@ -80,57 +53,12 @@ const MenuBar = () => {
                 </Box>
 
                 {/* User Menu */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Tooltip title="User Menu">
-                        <IconButton
-                            onClick={handleMenuOpen}
-                            sx={{
-                                bgcolor: open ? 'grey.100' : 'transparent',
-                                '&:hover': { bgcolor: 'grey.100' },
-                            }}
-                        >
-                            <Avatar sx={{ bgcolor: 'purple.500', width: 36, height: 36 }}>
-                                <AiOutlineUser size={20} />
-                            </Avatar>
-                        </IconButton>
-                    </Tooltip>
-
-                    {/* User Menu Dropdown */}
-                    <Menu
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleMenuClose}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                        PaperProps={{
-                            elevation: 3,
-                            sx: {
-                                mt: 1,
-                                borderRadius: 2,
-                                minWidth: 200,
-                                '& .MuiMenuItem-root': {
-                                    py: 1.5,
-                                    fontSize: '0.9rem',
-                                    '&:hover': { bgcolor: 'purple.50' },
-                                },
-                            },
-                        }}
-                    >
-                        <MenuItem onClick={handleProfile}>
-                            <AiOutlineUser style={{ marginRight: 8 }} />
-                            Profile
-                        </MenuItem>
-                        <MenuItem onClick={handleSettings}>
-                            <AiOutlineSetting style={{ marginRight: 8 }} />
-                            Settings
-                        </MenuItem>
-                        <Divider sx={{ my: 0.5 }} />
-                        <MenuItem onClick={handleLogout}>
-                            <AiOutlineLogout style={{ marginRight: 8, color: 'error.main' }} />
-                            <Typography color="error.main">Logout</Typography>
-                        </MenuItem>
-                    </Menu>
-                </Box>
+                <div className="flex gap-4 text-[20px]">
+                    <FaFacebookF />
+                    <FaYoutube />
+                    <FaFacebookF />
+                    <FaYoutube />
+                </div>
             </Box>
         </Box>
     );
