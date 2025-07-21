@@ -1,18 +1,7 @@
-import React from 'react';
-import {
-    AppBar,
-    Box,
-    Button,
-    IconButton,
-    Toolbar,
-    Typography,
-} from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import LogoutIcon from '@mui/icons-material/Logout';
-import {Link, useNavigate} from 'react-router-dom'
-import {IoNotificationsSharp} from "react-icons/io5";
+import { Link, useNavigate } from 'react-router-dom';
+import { IoNotificationsSharp } from "react-icons/io5";
+import { IoCartOutline, IoLogOutOutline } from 'react-icons/io5';
+
 
 const AppNavbar = () => {
     const navigate = useNavigate();
@@ -21,46 +10,36 @@ const AppNavbar = () => {
         navigate("/login")
     }
     return (
-        <AppBar position="static" elevation={0} sx={{ backgroundColor: '#fff', borderBottom: '1px solid #eee' }}>
-            <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <div className="bg-white shadow sticky top-0 z-50">
+            <div className="flex justify-between items-center px-4 py-3 max-w-7xl mx-auto">
                 {/* Logo */}
-
-                <Link to={"/"}>
-                    <Typography variant="h6" color="textPrimary" fontWeight={700}>
-                        Logo
-                    </Typography>
+                <Link to="/">
+                    <span className="text-xl font-bold text-gray-900">Logo</span>
                 </Link>
 
                 {/* Icons */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <IconButton>
-                        <IoNotificationsSharp sx={{ color: '#f87171' }} /> {/* red-400 */}
-                    </IconButton>
-                    <Link to={"/order/delivery-order"}>
-                        <IconButton>
-                            <ShoppingCartOutlinedIcon sx={{ color: '#a78bfa' }} /> {/* violet-400 */}
-                        </IconButton>
+                <div className="flex items-center gap-4">
+                    <button className="text-red-400 hover:text-red-500 transition-colors">
+                        <IoNotificationsSharp size={24} />
+                    </button>
+                    <Link to="/order/delivery-order">
+                        <button className="text-violet-400 hover:text-violet-500 transition-colors">
+                            <IoCartOutline size={24} />
+                        </button>
                     </Link>
 
                     {/* Logout Button */}
-                    <Button
+                    <button
                         onClick={logout}
-                        variant="contained"
-                        startIcon={<LogoutIcon />}
-                        sx={{
-                            backgroundColor: '#c084fc', // violet-400
-                            textTransform: 'none',
-                            fontWeight: 600,
-                            borderRadius: '8px',
-                            px: 2,
-                            '&:hover': { backgroundColor: '#a855f7' }, // hover violet-500
-                        }}
+                        className="flex items-center gap-2 bg-violet-400 text-white font-semibold px-4 py-2 rounded-lg hover:bg-violet-500 transition-colors"
                     >
+                        <IoLogOutOutline size={20} />
                         Logout
-                    </Button>
-                </Box>
-            </Toolbar>
-        </AppBar>
+                    </button>
+                </div>
+            </div>
+        </div>
+
     );
 };
 

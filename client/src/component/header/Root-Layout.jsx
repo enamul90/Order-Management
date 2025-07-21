@@ -5,15 +5,17 @@ import Footer from "../footer/Footer.jsx";
 const RootLayout = ({ children }) => {
     return (
         <>
-            {/* Sticky Navbar */}
-            <div className="sticky top-0 z-50">
-                <AppNavbar />
-            </div>
+            <div className="grid lg:grid-cols-5">
+                <div className={"col-span-1 "}>
 
-            {/* Page content */}
-            <div className="my-5">
-                {children}
+                </div>
+                <
+                div className={"col-span-4 relative"}>
+                    <AppNavbar />
+                    {children}
+                </div>
             </div>
+            <Footer />
         </>
     );
 };
